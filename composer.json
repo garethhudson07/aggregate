@@ -1,0 +1,24 @@
+{
+  "name": "garethhudson07/aggregate",
+  "description": "Result set aggregation class.",
+  "keywords": [
+    "aggregate",
+    "collection",
+    "set",
+    "resultset"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gareth Hudson"
+    }
+  ],
+  "require": {
+    "php": "^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Aggregate\\": "src/"
+    }
+  }
+}
