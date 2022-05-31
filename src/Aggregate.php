@@ -19,10 +19,10 @@ class Aggregate implements IteratorAggregate, ArrayAccess, Countable, Arrayable
     protected $items = [];
 
     /**
-     * @param mixed $value
+     * @param $value
      * @return static
      */
-    public function push(mixed $value): static
+    public function push($value): self
     {
         $this->items[] = $value;
 
@@ -33,7 +33,7 @@ class Aggregate implements IteratorAggregate, ArrayAccess, Countable, Arrayable
      * @param array $items
      * @return static
      */
-    public function fill(array $items): static
+    public function fill(array $items): self
     {
         $this->items = $items;
 
@@ -41,10 +41,10 @@ class Aggregate implements IteratorAggregate, ArrayAccess, Countable, Arrayable
     }
 
     /**
-     * @param mixed $offset
+     * @param $offset
      * @return static
      */
-    public function unset(mixed $offset): static
+    public function unset($offset): self
     {
         $this->offsetUnset($offset);
 
@@ -72,10 +72,10 @@ class Aggregate implements IteratorAggregate, ArrayAccess, Countable, Arrayable
     /**
      * Determine if an item exists at an offset.
      *
-     * @param mixed $offset
+     * @param $offset
      * @return bool
      */
-    public function offsetExists(mixed $offset): bool
+    public function offsetExists($offset): bool
     {
         return array_key_exists($offset, $this->items);
     }
@@ -83,22 +83,22 @@ class Aggregate implements IteratorAggregate, ArrayAccess, Countable, Arrayable
     /**
      * Get an item at a given offset.
      *
-     * @param mixed $offset
+     * @param $offset
      * @return mixed
      */
-    public function offsetGet(mixed $offset): mixed {
+    public function offsetGet($offset) {
         return $this->offsetExists($offset) ? $this->items[$offset] : null;
     }
 
     /**
      * Set the item at a given offset.
      *
-     * @param mixed $offset
-     * @param mixed $value
+     * @param $offset
+     * @param $value
      * @return void
      */
 
-    public function offsetSet(mixed $offset, mixed $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->items[] = $value;
@@ -113,7 +113,7 @@ class Aggregate implements IteratorAggregate, ArrayAccess, Countable, Arrayable
      * @param string $offset
      * @return void
      */
-    public function offsetUnset(mixed $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->items[$offset]);
     }
@@ -165,7 +165,7 @@ class Aggregate implements IteratorAggregate, ArrayAccess, Countable, Arrayable
      *
      * @return mixed
      */
-    public function jsonSerialize(): mixed
+    public function jsonSerialize()
     {
         return $this->items;
     }

@@ -5,19 +5,19 @@ namespace Aggregate;
 class Set extends Aggregate
 {
     /**
-     * @param mixed $value
+     * @param $value
      * @return bool
      */
-    public function has(mixed $value): bool
+    public function has($value): bool
     {
         return in_array($value, $this->items);
     }
 
     /**
-     * @param mixed $value
+     * @param $value
      * @return static
      */
-    public function include(mixed $value): static
+    public function include($value): self
     {
         if (!$this->has($value)) {
             $this->items[] = $value;
@@ -29,7 +29,7 @@ class Set extends Aggregate
     /**
      * @return mixed
      */
-    public function first(): mixed
+    public function first()
     {
         return $this->items[0] ?? null;
     }
@@ -37,7 +37,7 @@ class Set extends Aggregate
     /**
      * @return mixed
      */
-    public function last(): mixed
+    public function last()
     {
         return $this->items[count($this->items) - 1] ?? null;
     }
@@ -45,7 +45,7 @@ class Set extends Aggregate
     /**
      * @return mixed
      */
-    public function penultimate(): mixed
+    public function penultimate()
     {
         return $this->items[count($this->items) - 2] ?? null;
     }
@@ -54,7 +54,7 @@ class Set extends Aggregate
      * @param int $index
      * @return static
      */
-    public function before(int $index): static
+    public function before(int $index): self
     {
         return (new static)->fill(
             array_slice($this->items, 0, $index)
@@ -65,7 +65,7 @@ class Set extends Aggregate
      * @param int $index
      * @return static
      */
-    public function after(int $index): static
+    public function after(int $index): self
     {
         return (new static)->fill(
             array_slice($this->items, $index + 1)
@@ -76,7 +76,7 @@ class Set extends Aggregate
      * @param int $index
      * @return static
      */
-    public function slice(int $index): static
+    public function slice(int $index): self
     {
         return (new static)->fill(
             array_slice($this->items, $index)

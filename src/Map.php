@@ -8,7 +8,7 @@ class Map extends Aggregate
      * @param string $name
      * @return mixed
      */
-    public function get(string $name): mixed
+    public function get(string $name)
     {
         return $this->offsetGet($name);
     }
@@ -18,7 +18,7 @@ class Map extends Aggregate
      * @param $value
      * @return $this
      */
-    public function set(string $name, $value): static
+    public function set(string $name, $value): self
     {
         $this->offsetSet($name, $value);
 
@@ -38,7 +38,7 @@ class Map extends Aggregate
      * @param string $name
      * @return mixed
      */
-    public function __get(string $name): mixed
+    public function __get(string $name)
     {
         if ($this->has($name)) {
             return $this->get($name);
@@ -49,9 +49,9 @@ class Map extends Aggregate
 
     /**
      * @param string $name
-     * @param mixed $value
+     * @param $value
      */
-    public function __set(string $name, mixed $value): void
+    public function __set(string $name, $value): void
     {
         $this->set($name, $value);
     }
