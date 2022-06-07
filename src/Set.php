@@ -5,7 +5,18 @@ namespace Aggregate;
 class Set extends Aggregate
 {
     /**
-     * @param $value
+     * @param mixed $value
+     * @return static
+     */
+    public function push(mixed $value): static
+    {
+        $this->items[] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param mixed $value
      * @return bool
      */
     public function has($value): bool
@@ -20,8 +31,19 @@ class Set extends Aggregate
     public function include($value): self
     {
         if (!$this->has($value)) {
-            $this->items[] = $value;
+            $this->push($value);
         }
+
+        return $this;
+    }
+
+    /**
+     * @param mixed ...$items
+     * @return static
+     */
+    public function unshift(...$items): static
+    {
+        array_unshift($this->items, ...$items);
 
         return $this;
     }
