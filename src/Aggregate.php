@@ -129,6 +129,17 @@ class Aggregate implements IteratorAggregate, ArrayAccess, Countable, Arrayable
     }
 
     /**
+     * @param array $items
+     * @return Aggregate
+     */
+    public function merge(array ...$arrays): self
+    {
+        $this->items = array_merge($this->items, ...$arrays);
+
+        return $this;
+    }
+
+    /**
      * Convert the collection to its string representation.
      *
      * @return string
