@@ -16,18 +16,7 @@ class Aggregate implements IteratorAggregate, ArrayAccess, Countable, Arrayable
      *
      * @var array
      */
-    protected $items = [];
-
-    /**
-     * @param mixed $value
-     * @return static
-     */
-    public function push(mixed $value): static
-    {
-        $this->items[] = $value;
-
-        return $this;
-    }
+    protected array $items = [];
 
     /**
      * @param array $items
