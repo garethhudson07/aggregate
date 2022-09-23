@@ -8,7 +8,7 @@ class Set extends Aggregate
      * @param mixed $value
      * @return static
      */
-    public function push(mixed $value): static
+    public function push(mixed $value): self
     {
         $this->items[] = $value;
 
@@ -41,7 +41,7 @@ class Set extends Aggregate
      * @param mixed ...$items
      * @return static
      */
-    public function unshift(...$items): static
+    public function unshift(...$items): self
     {
         array_unshift($this->items, ...$items);
 
